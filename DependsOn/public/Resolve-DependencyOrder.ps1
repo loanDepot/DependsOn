@@ -43,6 +43,7 @@ function Resolve-DependencyOrder
         Dependencies will be walked in order that they are defined in the DependsOn
 
     #>
+    [Alias('DependsOn')]
     [cmdletbinding()]
     param(
         # Collection of objects to order
