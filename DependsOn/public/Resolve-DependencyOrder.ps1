@@ -45,6 +45,7 @@ function Resolve-DependencyOrder
     #>
     [cmdletbinding()]
     param(
+        # Collection of objects to order
         [parameter(
             Mandatory,
             Position = 0,
@@ -54,12 +55,14 @@ function Resolve-DependencyOrder
         [PSObject[]]
         $InputObject,
 
+        # scriptblock that generates a unique key for each object
         [parameter(
             Position = 1,
             ValueFromPipelineByPropertyName
         )]
         [scriptblock]$Key = {"$PSItem"},
 
+        # scriptblock that generates a list of keys this each item depends on
         [parameter(
             Mandatory,
             Position = 2,
