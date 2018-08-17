@@ -1,7 +1,7 @@
 # see https://www.appveyor.com/docs/appveyor-yml
 
 environment:
-  NugetApiKey:
+  NuGetApiKey:
     secure: Bnrv6GbJAwEINiebF7/lIZTgdaKq2oQHmc5Z1kYoLgNJ1tGOwo4lKNCHsFhkqZok
 
 # Allow WMF5 (i.e. PowerShellGallery functionality)
@@ -11,6 +11,8 @@ image: Visual Studio 2017
 # We can force this by adding [skip ci] or [ci skip] anywhere in commit message
 skip_commits:
   message: /updated (readme|doc).*|update (readme|doc).*s/
+
+skip_branch_with_pr: true
 
 build: false
 

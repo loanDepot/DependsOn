@@ -20,6 +20,7 @@ Get-PackageProvider -Name 'NuGet' -ForceBootstrap | Out-Null
 Install-Module -Name $Script:Modules -Scope $Script:ModuleInstallScope -Force -SkipPublisherCheck
 
 Set-BuildEnvironment
+Get-ChiltItem Env:BH*
 $Error.Clear()
 
 'Invoking build...'
