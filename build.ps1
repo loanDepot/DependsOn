@@ -17,9 +17,12 @@ $Script:ModuleInstallScope = 'CurrentUser'
 
 Get-PackageProvider -Name 'NuGet' -ForceBootstrap | Out-Null
 
-Install-Module -Name $Script:Modules -Scope $Script:ModuleInstallScope -Force
+Install-Module -Name $Script:Modules -Scope $Script:ModuleInstallScope -Force -SkipPublisherCheck
 
 Set-BuildEnvironment
+Get-ChildItem Env:BH*
+Get-ChildItem Env:APPVEYOR*
+
 $Error.Clear()
 
 'Invoking build...'

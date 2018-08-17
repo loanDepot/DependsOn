@@ -1,5 +1,5 @@
 $Script:ModuleRoot = Split-Path -Path (Split-Path -Path $PSScriptRoot -Parent) -Parent
-$Script:ModuleName = Split-Path -Path $ModuleRoot -Leaf
+$Script:ModuleName = $Script:ModuleName = Get-ChildItem $ModuleRoot\*\*.psm1 | Select-object -ExpandProperty BaseName
 
 Describe "Public commands have comment-based or external help" -Tags 'Build' {
     $functions = Get-Command -Module $ModuleName
@@ -16,6 +16,7 @@ Describe "Public commands have comment-based or external help" -Tags 'Build' {
 
             It "Should have an Example"  {
                 $node.Examples | Should Not BeNullOrEmpty
+                $node.Examples | Out-String | Should -Match ($node.Name)
             }
 
             foreach ($parameter in $node.Parameters.Parameter)
