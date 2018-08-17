@@ -21,7 +21,7 @@ Install-Module -Name $Script:Modules -Scope $Script:ModuleInstallScope -Force -S
 
 Set-BuildEnvironment
 Get-ChildItem Env:BH*
-Get-ChiltItem Env:APPVEYOR*
+Get-ChildItem Env:APPVEYOR*
 
 $Error.Clear()
 
