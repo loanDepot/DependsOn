@@ -1,12 +1,14 @@
 task PublishModule {
 
-    if((git branch) -match '\* master'  )
+    if( $ENV:BHBuildSystem -ne 'Unknown' -and
+        $ENV:BHBranchName -eq "master")
     {
         Publish-Module -Path $Destination -NuGetApiKey $env:NuGetApiKey -Repository $PSRepository -Force -Verbose
     }
     else
     {
-        Write-Output "Can only publish to the psgallery from the master branch"
-        git -branch
+        "Skipping deployment: To deploy, ensure that...`n" +
+        "`t* You are in a known build system (Current: $ENV:BHBuildSystem)`n" +
+        "`t* You are committing to the master branch (Current: $ENV:BHBranchName) `n"
     }
 }
