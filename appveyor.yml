@@ -1,8 +1,6 @@
 # see https://www.appveyor.com/docs/appveyor-yml
 
 environment:
-  BH_TESTVALUE:
-    secure: 90xg/qtMmoCQZsJ7MkQllA==
   NugetApiKey:
     secure: Bnrv6GbJAwEINiebF7/lIZTgdaKq2oQHmc5Z1kYoLgNJ1tGOwo4lKNCHsFhkqZok
 
