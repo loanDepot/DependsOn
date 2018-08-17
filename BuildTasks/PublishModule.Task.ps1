@@ -3,7 +3,7 @@ task PublishModule {
     if( $ENV:BHBuildSystem -ne 'Unknown' -and
         $ENV:BHBranchName -eq "master" -and
         [string]::IsNullOrWhiteSpace($ENV:APPVEYOR_PULL_REQUEST_NUMBER) -and
-        -not [string]::IsNullOrWhiteSpace(($ENV:NugetApiKey))
+        -not [string]::IsNullOrWhiteSpace($ENV:NugetApiKey))
     {
         Publish-Module -Path $Destination -NuGetApiKey $ENV:NugetApiKey -Repository $PSRepository -Force -Verbose
     }
