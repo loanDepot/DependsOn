@@ -14,6 +14,10 @@ skip_commits:
 
 build: false
 
-#Kick off the CI/CD pipeline
-test_script:
+# Kick off the CI/CD pipeline
+build_script:
   - ps: . .\build.ps1
+
+# Publish module
+on_success:
+  - ps: . .\build.ps1 PublishModule
