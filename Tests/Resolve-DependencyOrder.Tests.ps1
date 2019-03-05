@@ -42,7 +42,7 @@ Describe "function Resolve-DependencyOrder" -Tag Build {
             'Grandma' = 'Grandpa'
             'Boy'     = 'Dad', 'Mom'
         }
-        
+
         $results = Resolve-DependencyOrder -InputObject $map.Keys -DependsOn {$map[$_]}
         $results | Should -Not -BeNullOrEmpty
         $results | Should -HaveCount 6
@@ -72,5 +72,15 @@ Describe "function Resolve-DependencyOrder" -Tag Build {
         $results | Should -HaveCount 2
         $results[0].Name | Should -BeExactly 'Mom'
         $results[-1].Name | Should -BeExactly 'Dad'
+    }
+
+    It "Handles null items in a list" {
+        $list = @(1, 2, $null, , 3)
+        $results = Resolve-DependencyOrder -InputObject $list -Key {$_} -DependsOn {$null}
+    }
+
+    It "Handles null items in a list over the pipe" {
+        $list = @(1, 2, $null, , 3)
+        $results = $list | Resolve-DependencyOrder -Key {$_} -DependsOn {$null}
     }
 }
