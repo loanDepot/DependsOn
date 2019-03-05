@@ -52,7 +52,7 @@ function Resolve-DependencyOrder
             Position = 0,
             ValueFromPipeline
         )]
-        [ValidateNotNullOrEmpty()]
+        [AllowNull()]
         [PSObject[]]
         $InputObject,
 
